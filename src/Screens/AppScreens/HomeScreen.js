@@ -10,11 +10,11 @@ const HomeScreen = ({navigation}) => {
   useEffect(() => {}, []);
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1,backgroundColor:"red"}}>
       <View style={styles.topBarContainer}>
         <Text style={styles.topBarText}>Thu, 22:06 - Akpatel360</Text>
       </View>
-      <View style={{flex: 1}}>
+      {/* <View style={{flex: 1}}>
         <View style={styles.mapContainer}>
           <MapView
             provider={PROVIDER_GOOGLE} // remove if not using Google Maps
@@ -26,7 +26,7 @@ const HomeScreen = ({navigation}) => {
               longitudeDelta: 0.0121,
             }}></MapView>
         </View>
-      </View>
+      </View> */}
     </View>
   );
 };
