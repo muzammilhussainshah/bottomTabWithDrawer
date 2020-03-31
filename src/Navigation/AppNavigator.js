@@ -1,11 +1,15 @@
 // import {createBottomTabNavigator} from 'react-navigation-tabs';
 import HomeScreen from '../Screens/AppScreens/HomeScreen';
+import Drawer from '../Screens/AppScreens/Drawer';
 // import SearchScreen from '../Screens/AppScreens/SearchScreen';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import { NavigationContainer } from '@react-navigation/native';
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-export default  HomeStack = createStackNavigator({ Home: HomeScreen });
+export default HomeStack = createStackNavigator({
+    Home: HomeScreen,
+    Drawer:Drawer,
+});
 
 // export default createMaterialBottomTabNavigator({
 //   Home: HomeStack,

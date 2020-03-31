@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, TouchableOpacity, StyleSheet, Text, Image } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Text, Dimensions } from 'react-native';
 import Colors from '../../Constants/Colors';
 import Footer from '../../Component/Footer';
 import SearchScreen from '../../Screens/AppScreens/SearchScreen';
@@ -7,33 +7,56 @@ import KMPScreen from '../../Screens/AppScreens/KMPScreen';
 import CartScreen from '../../Screens/AppScreens/CartScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+var { height, width } = Dimensions.get('window');
 
 const HomeScreen = ({ navigation }) => {
   const [title, setTitle] = useState('Home');
+  const [drawer, drawerTitle] = useState(true);
   useEffect(() => { }, []);
   return (
-    <View style={{ flex: 1,  }}>
+    <View style={{ flex: 1, }}>
+      {/* //drawer close view// */}
+      {/* {(drawer) && (
+        <TouchableOpacity
+          activeOpacity={1}
+          // onPress={() => { this.setState({ drawer: false }) }}
+          style={{ position: "absolute", height: height, width: "30%", right: 0, zIndex: 1,backgroundColor:"red" }}>
+        </TouchableOpacity>
+      )} */}
+      {/* draewaer  */}
+      {/* {(this.state.drawer === true) && (
+        <Drawer
+          navigation={this.props.navigation}
+          animationStyle="fadeInLeftBig"
+          animateParent={this.animateParent.bind(this)}
+        />
+      )} */}
+
+
+
+
+
       <View style={styles.topBarContainer}>
         <Text style={styles.topBarText}>Thu, 22:06 - Akpatel360</Text>
       </View>
       <View style={{ flex: 1 }}>
-      {title==="Home"&&
-        <View style={styles.mapContainer}>
-          <MapView
-            provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-            style={styles.map}
-            region={{
-              latitude: 37.78825,
-              longitude: -122.4324,
-              latitudeDelta: 0.015, 
-              longitudeDelta: 0.0121,
-            }}></MapView>
-        </View>}
-        {title==="Search"&&<SearchScreen/>}
-        {title==="KMP"&&<KMPScreen/>}
-        {title==="Cart"&&<CartScreen/>}
+        {title === "Home" &&
+          <View style={styles.mapContainer}>
+            <MapView
+              provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+              style={styles.map}
+              region={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.015,
+                longitudeDelta: 0.0121,
+              }}></MapView>
+          </View>}
+        {title === "Search" && <SearchScreen />}
+        {title === "KMP" && <KMPScreen />}
+        {title === "Cart" && <CartScreen />}
       </View>
-      <Footer func={(nav)=>setTitle(nav)} activeRout={title}/>
+      <Footer func={(nav) => setTitle(nav)} activeRout={title} />
     </View>
   );
 };
@@ -51,7 +74,7 @@ HomeScreen['navigationOptions'] = ({ navigation }) => {
     },
     headerTintColor: Colors.secondaryColor,
     headerLeft: () => (
-      <TouchableOpacity onPress={()=>alert("work")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Drawer")}>
         <Icon
           name="menu"
           color={Colors.secondaryColor}
