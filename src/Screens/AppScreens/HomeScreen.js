@@ -1,20 +1,23 @@
-import React, {useEffect, useState} from 'react';
-import {View, TouchableOpacity, StyleSheet, Text, Platform} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, TouchableOpacity, StyleSheet, Text, Image } from 'react-native';
 import Colors from '../../Constants/Colors';
+import Footer from '../../Component/Footer';
+import Search from '../../Screens/AppScreens/Search';
+import KMP from '../../Screens/AppScreens/KMP';
+import Cart from '../../Screens/AppScreens/Cart';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
   const [title, setTitle] = useState('Home');
-
-  useEffect(() => {}, []);
-
+  useEffect(() => { }, []);
   return (
-    <View style={{flex: 1,backgroundColor:"red"}}>
+    <View style={{ flex: 1,  }}>
       <View style={styles.topBarContainer}>
         <Text style={styles.topBarText}>Thu, 22:06 - Akpatel360</Text>
       </View>
-      {/* <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
+      {title==="Home"&&
         <View style={styles.mapContainer}>
           <MapView
             provider={PROVIDER_GOOGLE} // remove if not using Google Maps
@@ -25,13 +28,17 @@ const HomeScreen = ({navigation}) => {
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}></MapView>
-        </View>
-      </View> */}
+        </View>}
+        {title==="Search"&&<Search/>}
+        {title==="KMP"&&<KMP/>}
+        {title==="Cart"&&<Cart/>}
+      </View>
+      <Footer func={(nav)=>setTitle(nav)} activeRout={title}/>
     </View>
   );
 };
 
-HomeScreen['navigationOptions'] = ({navigation}) => {
+HomeScreen['navigationOptions'] = ({ navigation }) => {
   return {
     title:
       navigation.state.params !== undefined
@@ -49,7 +56,7 @@ HomeScreen['navigationOptions'] = ({navigation}) => {
           name="menu"
           color={Colors.secondaryColor}
           size={24}
-          style={{paddingLeft: 15}}
+          style={{ paddingLeft: 15 }}
         />
       </TouchableOpacity>
     ),
@@ -81,9 +88,9 @@ const styles = StyleSheet.create({
   topBarContainer: {
     height: 40,
     backgroundColor: Colors.primaryColor,
-    alignItems: 'center',    
+    alignItems: 'center',
   },
-  topBarText: {color: Colors.secondaryColor, fontSize: 16, textAlign: 'center'},
+  topBarText: { color: Colors.secondaryColor, fontSize: 16, textAlign: 'center' },
   mapContainer: {
     ...StyleSheet.absoluteFillObject,
     flex: 0.9,
