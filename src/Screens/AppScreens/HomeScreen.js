@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { View, TouchableOpacity, StyleSheet, Text, Image } from 'react-native';
 import Colors from '../../Constants/Colors';
 import Footer from '../../Component/Footer';
-import Search from '../../Screens/AppScreens/Search';
-import KMP from '../../Screens/AppScreens/KMP';
-import Cart from '../../Screens/AppScreens/Cart';
+import SearchScreen from '../../Screens/AppScreens/SearchScreen';
+import KMPScreen from '../../Screens/AppScreens/KMPScreen';
+import CartScreen from '../../Screens/AppScreens/CartScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
@@ -25,13 +25,13 @@ const HomeScreen = ({ navigation }) => {
             region={{
               latitude: 37.78825,
               longitude: -122.4324,
-              latitudeDelta: 0.015,
+              latitudeDelta: 0.015, 
               longitudeDelta: 0.0121,
             }}></MapView>
         </View>}
-        {title==="Search"&&<Search/>}
-        {title==="KMP"&&<KMP/>}
-        {title==="Cart"&&<Cart/>}
+        {title==="Search"&&<SearchScreen/>}
+        {title==="KMP"&&<KMPScreen/>}
+        {title==="Cart"&&<CartScreen/>}
       </View>
       <Footer func={(nav)=>setTitle(nav)} activeRout={title}/>
     </View>
@@ -51,7 +51,7 @@ HomeScreen['navigationOptions'] = ({ navigation }) => {
     },
     headerTintColor: Colors.secondaryColor,
     headerLeft: () => (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>alert("work")}>
         <Icon
           name="menu"
           color={Colors.secondaryColor}

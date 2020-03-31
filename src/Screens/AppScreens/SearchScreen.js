@@ -1,12 +1,10 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-
-const SearchScreen = () => {
-    return (
-        <View>
-            <Text></Text>
-        </View>
-    )
-}
-
-export default SearchScreen
+import React, { useEffect, useState } from 'react';
+import { View,  Text,  } from 'react-native';
+const Search = ({ navigation }) => {
+  return (
+    <View style={{ flex: 1, }}>
+      <Text>search</Text>
+    </View>
+  );
+};
+export default Search;

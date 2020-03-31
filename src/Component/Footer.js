@@ -16,7 +16,7 @@ export default class Footer extends React.Component {
     render() {
         const { func, activeRout } = this.props
         return (
-            <View style={{ backgroundColor: "green", justifyContent: "center" }}>
+            <View style={{  justifyContent: "center" }}>
                 <Image resizeMode="cover" source={require("../Assets/bottom.png")} style={{ height: 55, width: "100%" }} />
                 <TouchableOpacity
                     onPress={() => func("Home")}
