@@ -2,17 +2,13 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import HomeScreen from '../Screens/AppScreens/HomeScreen';
 import SearchScreen from '../Screens/AppScreens/SearchScreen';
 import KMPScreen from '../Screens/AppScreens/KMPScreen';
-import Drawer from '../Screens/AppScreens/Drawer';
 import CartScreen from '../Screens/AppScreens/CartScreen';
 import { createStackNavigator } from 'react-navigation-stack';
 import React from "react";
-import { Image, StyleSheet, Button, Text } from 'react-native';
 import Colors from '../Constants/Colors';
 import { HomeIcon, SearchIcon, KMPIcon, CartIcon } from '../Component/Icons';
-import { Private,History,Setting,SetaExpense,Messages,Beyound,DisplaysNearby,Refresh,SendACommand, } from '../Screens/DrawerScreens/index';
+import { Private, History, Setting, SetaExpense, Messages, Beyound, DisplaysNearby, Refresh, SendACommand, } from '../Screens/DrawerScreens/index';
 import { createDrawerNavigator } from 'react-navigation-drawer';
-import SafeAreaView from 'react-native-safe-area-view';
-import { DrawerItems } from 'react-navigation-drawer';
 import CustomDrawer from './CustomDrawer';
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -57,8 +53,9 @@ const Bottom = createBottomTabNavigator(
   }
 );
 
+
 export default MyDrawerNavigator = createDrawerNavigator({
-  "Back.": Bottom,
+  Back: Bottom,
   Private: {
     screen: Private,
   },
@@ -88,18 +85,18 @@ export default MyDrawerNavigator = createDrawerNavigator({
   },
 },
   {
-    initialRouteName: 'Back.',
-    drawerWidth: "100%",
+    // initialRouteName: "none",
+    drawerWidth: "110%",
     contentComponent: CustomDrawer,
     contentOptions: {
       activeTintColor: Colors.secondaryColor,
-      activeLabelStyle : Colors.secondaryColor,
-      
+      activeLabelStyle: Colors.secondaryColor,
+
       inactiveTintColor: Colors.white,
-     
+
       iconContainerStyle: {
         opacity: 1
       },
-     
+
     }
   });
