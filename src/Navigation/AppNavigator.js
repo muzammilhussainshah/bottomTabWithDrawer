@@ -6,112 +6,100 @@ import Drawer from '../Screens/AppScreens/Drawer';
 import CartScreen from '../Screens/AppScreens/CartScreen';
 import { createStackNavigator } from 'react-navigation-stack';
 import React from "react";
-import { Image,StyleSheet } from 'react-native';
+import { Image, StyleSheet, Button, Text } from 'react-native';
 import Colors from '../Constants/Colors';
-import {HomeIcon,SearchIcon,KMPIcon,CartIcon} from '../Component/Icons';
+import { HomeIcon, SearchIcon, KMPIcon, CartIcon } from '../Component/Icons';
+import { Private,History,Setting,SetaExpense,Messages,Beyound,DisplaysNearby,Refresh,SendACommand, } from '../Screens/DrawerScreens/index';
+import { createDrawerNavigator } from 'react-navigation-drawer';
+import SafeAreaView from 'react-native-safe-area-view';
+import { DrawerItems } from 'react-navigation-drawer';
+import CustomDrawer from './CustomDrawer';
 const HomeStack = createStackNavigator({
-     Home: HomeScreen,
-     Drawer: Drawer,
-     });
+  Home: HomeScreen,
+});
 
-export default createBottomTabNavigator(
-    {
-        Home: HomeStack,
-        Search: SearchScreen,
-        KMP: KMPScreen,
-        CartIcon: CartScreen,
+const Bottom = createBottomTabNavigator(
+  {
+    Home: HomeStack,
+    Search: SearchScreen,
+    KMP: KMPScreen,
+    CartIcon: CartScreen,
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+        if (routeName === 'Home') {
+          return <HomeIcon focused={focused} />;
+        }
+        if (routeName === 'Search') {
+          return <SearchIcon focused={focused} />;
+        }
+        if (routeName === 'KMP') {
+          return <KMPIcon focused={focused} />;
+        }
+        if (routeName === 'CartIcon') {
+          return <CartIcon focused={focused} />;
+        }
+      },
+    }),
+
+    tabBarOptions: {
+      showLabel: false,
+      showIcon: true,
+      tintColor: '#333',
+      activeTintColor: '#aaa',
+      style: {
+        backgroundColor: Colors.primaryColor,
+        height: 65
+      },
     },
-    {
-        defaultNavigationOptions: ({ navigation }) => ({
-            tabBarIcon: ({ focused, horizontal, tintColor }) => {
-                const { routeName } = navigation.state;
-                if (routeName === 'Home') {
-                    return <HomeIcon focused={focused} />;
-                }
-                if (routeName === 'Search') {
-                    return <SearchIcon focused={focused} />;
-                }
-                if (routeName === 'KMP') {
-                    return <KMPIcon focused={focused} />;
-                }
-                if (routeName === 'CartIcon') {
-                    return <CartIcon focused={focused} />;
-                }
-            },
-        }),
-        
-        tabBarOptions: {
-            showLabel: false,
-            showIcon: true,
-            tintColor: '#333',
-            activeTintColor: '#aaa',
-            style: {
-                backgroundColor: Colors.primaryColor,
-                height: 65
-            },
-        },
-    }
+  }
 );
 
-
-
-
-// class MyHomeScreen extends React.Component {
-//     static navigationOptions = {
-//       drawerLabel: 'Home',
-//       drawerIcon: ({ tintColor }) => (
-//         <Image
-//           source={require('../Assets/D1.png')}
-//           style={[styles.icon, { tintColor: tintColor }]}
-//         />
-//       ),
-//     };
-  
-//     render() {
-//       return (
-//         <Button
-//           onPress={() => this.props.navigation.navigate('Notifications')}
-//           title="Go to notifications"
-//         />
-//       );
-//     }
-//   }
-  
-//   class MyNotificationsScreen extends React.Component {
-//     static navigationOptions = {
-//       drawerLabel: 'Notifications',
-//       drawerIcon: ({ tintColor }) => (
-//         <Image
-//           source={require('../Assets/D1.png')}
-//           style={[styles.icon, { tintColor: tintColor }]}
-//         />
-//       ),
-//     };
-  
-//     render() {
-//       return (
-//         <Button
-//           onPress={() => this.props.navigation.goBack()}
-//           title="Go back home"
-//         />
-//       );
-//     }
-//   }
-  
-//   const styles = StyleSheet.create({
-//     icon: {
-//       width: 24,
-//       height: 24,
-//     },
-//   });
-  
-//   const MyDrawerNavigator = createDrawerNavigator({
-//     Home: {
-//       screen: MyHomeScreen,
-//     },
-//     Notifications: {
-//       screen: MyNotificationsScreen,
-//     },
-//   });
-  
-//   const MyApp = createAppContainer(MyDrawerNavigator);
+export default MyDrawerNavigator = createDrawerNavigator({
+  "Back.": Bottom,
+  Private: {
+    screen: Private,
+  },
+  History: {
+    screen: History,
+  },
+  Setting: {
+    screen: Setting,
+  },
+  SetaExpense: {
+    screen: SetaExpense,
+  },
+  Messages: {
+    screen: Messages,
+  },
+  Beyound: {
+    screen: Beyound,
+  },
+  DisplaysNearby: {
+    screen: DisplaysNearby,
+  },
+  Refresh: {
+    screen: Refresh,
+  },
+  SendACommand: {
+    screen: SendACommand,
+  },
+},
+  {
+    initialRouteName: 'Back.',
+    drawerWidth: "100%",
+    contentComponent: CustomDrawer,
+    contentOptions: {
+      activeTintColor: Colors.secondaryColor,
+      activeLabelStyle : Colors.secondaryColor,
+      
+      inactiveTintColor: Colors.white,
+     
+      iconContainerStyle: {
+        opacity: 1
+      },
+     
+    }
+  });
