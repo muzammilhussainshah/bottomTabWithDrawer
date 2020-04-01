@@ -15,27 +15,6 @@ const HomeScreen = ({ navigation }) => {
   useEffect(() => { }, []);
   return (
     <View style={{ flex: 1, }}>
-      {/* //drawer close view// */}
-      {/* {(drawer) && (
-        <TouchableOpacity
-          activeOpacity={1}
-          // onPress={() => { this.setState({ drawer: false }) }}
-          style={{ position: "absolute", height: height, width: "30%", right: 0, zIndex: 1,backgroundColor:"red" }}>
-        </TouchableOpacity>
-      )} */}
-      {/* draewaer  */}
-      {/* {(this.state.drawer === true) && (
-        <Drawer
-          navigation={this.props.navigation}
-          animationStyle="fadeInLeftBig"
-          animateParent={this.animateParent.bind(this)}
-        />
-      )} */}
-
-
-
-
-
       <View style={styles.topBarContainer}>
         <Text style={styles.topBarText}>Thu, 22:06 - Akpatel360</Text>
       </View>

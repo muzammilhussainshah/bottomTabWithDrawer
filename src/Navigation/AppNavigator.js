@@ -2,70 +2,24 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import HomeScreen from '../Screens/AppScreens/HomeScreen';
 import SearchScreen from '../Screens/AppScreens/SearchScreen';
 import KMPScreen from '../Screens/AppScreens/KMPScreen';
+import Drawer from '../Screens/AppScreens/Drawer';
 import CartScreen from '../Screens/AppScreens/CartScreen';
 import { createStackNavigator } from 'react-navigation-stack';
 import React from "react";
-import { Image } from 'react-native';
+import { Image,StyleSheet } from 'react-native';
 import Colors from '../Constants/Colors';
-const HomeStack = createStackNavigator({ Home: HomeScreen });
-// Home
-function HomeIcon({ focused }) {
-    if (focused) {
-        return (
-            <Image source={require("../Assets/icons/active/icon1.png")} style={{ width: "100%", height: 58.9 }} />
-        );
-    }
-    else {
-        return (
-            <Image source={require("../Assets/icons/deactive/icon1.png")} style={{ width: "100%", height: 58.9 }} />
-        );
-    }
-}
-// Search
-function SearchIcon({ focused }) {
-    if (focused) {
-        return (
-            <Image source={require("../Assets/icons/active/icon2.png")} style={{ width: "100%", height: 58.9 }} />
-        );
-    }
-    else {
-        return (
-            <Image source={require("../Assets/icons/deactive/icon2.png")} style={{ width: "100%", height: 58.9 }} />
-        );
-    }
-}
-// KMP
-function KMPIcon({ focused }) {
-    if (focused) {
-        return (
-            <Image source={require("../Assets/icons/active/icon3.png")} style={{ width: "100%", height: 58.9 }} />
-        );
-    }
-    else {
-        return (
-            <Image source={require("../Assets/icons/deactive/icon3.png")} style={{ width: "100%", height: 58.9 }} />
-        );
-    }
-}
-// Cart
-function CartIcon({ focused }) {
-    if (focused) {
-        return (
-            <Image source={require("../Assets/icons/active/icon4.png")} style={{ width: "100%", height: 58.9 }} />
-        );
-    }
-    else {
-        return (
-            <Image source={require("../Assets/icons/deactive/icon4.png")} style={{ width: "100%", height: 58.9 }} />
-        );
-    }
-}
+import {HomeIcon,SearchIcon,KMPIcon,CartIcon} from '../Component/Icons';
+const HomeStack = createStackNavigator({
+     Home: HomeScreen,
+     Drawer: Drawer,
+     });
+
 export default createBottomTabNavigator(
     {
         Home: HomeStack,
         Search: SearchScreen,
         KMP: KMPScreen,
-        Home3: CartScreen,
+        CartIcon: CartScreen,
     },
     {
         defaultNavigationOptions: ({ navigation }) => ({
@@ -80,11 +34,12 @@ export default createBottomTabNavigator(
                 if (routeName === 'KMP') {
                     return <KMPIcon focused={focused} />;
                 }
-                if (routeName === 'Home3') {
+                if (routeName === 'CartIcon') {
                     return <CartIcon focused={focused} />;
                 }
             },
         }),
+        
         tabBarOptions: {
             showLabel: false,
             showIcon: true,
@@ -97,3 +52,66 @@ export default createBottomTabNavigator(
         },
     }
 );
+
+
+
+
+// class MyHomeScreen extends React.Component {
+//     static navigationOptions = {
+//       drawerLabel: 'Home',
+//       drawerIcon: ({ tintColor }) => (
+//         <Image
+//           source={require('../Assets/D1.png')}
+//           style={[styles.icon, { tintColor: tintColor }]}
+//         />
+//       ),
+//     };
+  
+//     render() {
+//       return (
+//         <Button
+//           onPress={() => this.props.navigation.navigate('Notifications')}
+//           title="Go to notifications"
+//         />
+//       );
+//     }
+//   }
+  
+//   class MyNotificationsScreen extends React.Component {
+//     static navigationOptions = {
+//       drawerLabel: 'Notifications',
+//       drawerIcon: ({ tintColor }) => (
+//         <Image
+//           source={require('../Assets/D1.png')}
+//           style={[styles.icon, { tintColor: tintColor }]}
+//         />
+//       ),
+//     };
+  
+//     render() {
+//       return (
+//         <Button
+//           onPress={() => this.props.navigation.goBack()}
+//           title="Go back home"
+//         />
+//       );
+//     }
+//   }
+  
+//   const styles = StyleSheet.create({
+//     icon: {
+//       width: 24,
+//       height: 24,
+//     },
+//   });
+  
+//   const MyDrawerNavigator = createDrawerNavigator({
+//     Home: {
+//       screen: MyHomeScreen,
+//     },
+//     Notifications: {
+//       screen: MyNotificationsScreen,
+//     },
+//   });
+  
+//   const MyApp = createAppContainer(MyDrawerNavigator);
