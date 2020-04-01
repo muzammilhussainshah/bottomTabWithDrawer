@@ -8,11 +8,11 @@ const AuthStack = createStackNavigator({ SignIn: SignInScreen });
 
 export default createAppContainer(createSwitchNavigator(
   {
-    AuthLoading: AuthLoadingScreen,
+    // AuthLoading: AuthLoadingScreen,
     App: AppNavigator,
-    Auth: AuthStack,
+    // Auth: AuthStack,
   },
   {
-    initialRouteName: 'AuthLoading',
+    initialRouteName: 'App',
   }
 ));

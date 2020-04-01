@@ -56,7 +56,7 @@ const HomeScreen = ({ navigation }) => {
         {title === "KMP" && <KMPScreen />}
         {title === "Cart" && <CartScreen />}
       </View>
-      <Footer func={(nav) => setTitle(nav)} activeRout={title} />
+      {/* <Footer func={(nav) => setTitle(nav)} activeRout={title} /> */}
     </View>
   );
 };
