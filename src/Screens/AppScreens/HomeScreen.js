@@ -53,7 +53,9 @@ HomeScreen['navigationOptions'] = ({ navigation }) => {
     },
     headerTintColor: Colors.secondaryColor,
     headerLeft: () => (
-      <TouchableOpacity onPress={() => navigation.openDrawer()}>
+      <TouchableOpacity 
+      onPress={() => navigation.navigate("Drawer")}
+      >
         <Icon
           name="menu"
           color={Colors.secondaryColor}

@@ -6,15 +6,33 @@ import CartScreen from '../Screens/AppScreens/CartScreen';
 import { createStackNavigator } from 'react-navigation-stack';
 import React from "react";
 import Colors from '../Constants/Colors';
+import Drawer from '../Screens/AppScreens/Drawer';
 import { HomeIcon, SearchIcon, KMPIcon, CartIcon } from '../Component/Icons';
 import { Private, History, Setting, SetaExpense, Messages, Beyound, DisplaysNearby, Refresh, SendACommand, } from '../Screens/DrawerScreens/index';
-import { createDrawerNavigator } from 'react-navigation-drawer';
-import CustomDrawer from './CustomDrawer';
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
+  Drawer: Drawer,
+  Private: Private,
+  History: History,
+  Setting: Setting,
+  SetaExpense: SetaExpense,
+  Messages: Messages,
+  Beyound: Beyound,
+  DisplaysNearby: DisplaysNearby,
+  Refresh: Refresh,
+  SendACommand: SendACommand,
 });
+HomeStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+  return {
+    tabBarVisible,
+  };
+};
 
-const Bottom = createBottomTabNavigator(
+export default  Bottom = createBottomTabNavigator(
   {
     Home: HomeStack,
     Search: SearchScreen,
@@ -54,49 +72,49 @@ const Bottom = createBottomTabNavigator(
 );
 
 
-export default MyDrawerNavigator = createDrawerNavigator({
-  Back: Bottom,
-  Private: {
-    screen: Private,
-  },
-  History: {
-    screen: History,
-  },
-  Setting: {
-    screen: Setting,
-  },
-  SetaExpense: {
-    screen: SetaExpense,
-  },
-  Messages: {
-    screen: Messages,
-  },
-  Beyound: {
-    screen: Beyound,
-  },
-  DisplaysNearby: {
-    screen: DisplaysNearby,
-  },
-  Refresh: {
-    screen: Refresh,
-  },
-  SendACommand: {
-    screen: SendACommand,
-  },
-},
-  {
-    // initialRouteName: "none",
-    drawerWidth: "110%",
-    contentComponent: CustomDrawer,
-    contentOptions: {
-      activeTintColor: Colors.secondaryColor,
-      activeLabelStyle: Colors.secondaryColor,
+// export default MyDrawerNavigator = createDrawerNavigator({
+//   Back: Bottom,
+//   Private: {
+//     screen: Private,
+//   },
+//   History: {
+//     screen: History,
+//   },
+//   Setting: {
+//     screen: Setting,
+//   },
+//   SetaExpense: {
+//     screen: SetaExpense,
+//   },
+//   Messages: {
+//     screen: Messages,
+//   },
+//   Beyound: {
+//     screen: Beyound,
+//   },
+//   DisplaysNearby: {
+//     screen: DisplaysNearby,
+//   },
+//   Refresh: {
+//     screen: Refresh,
+//   },
+//   SendACommand: {
+//     screen: SendACommand,
+//   },
+// },
+//   {
+//     // initialRouteName: "none",
+//     drawerWidth: "110%",
+//     contentComponent: CustomDrawer,
+//     contentOptions: {
+//       activeTintColor: Colors.secondaryColor,
+//       activeLabelStyle: Colors.secondaryColor,
 
-      inactiveTintColor: Colors.white,
+//       inactiveTintColor: Colors.white,
 
-      iconContainerStyle: {
-        opacity: 1
-      },
+//       iconContainerStyle: {
+//         opacity: 1
+//       },
 
-    }
-  });
+//     }
+//   });
